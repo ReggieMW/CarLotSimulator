@@ -4,30 +4,54 @@ namespace CarLotSimulator
 {
     class Program
     {
+        
         static void Main(string[] args)
         {
-            //TODO
+            CarLot reggiesAutoWorld = new CarLot();
+            
+            //car1 w/ dot notation
+            Car bmwOne = new Car();
+            bmwOne.Year = 2022;
+            bmwOne.Make = "BMW";
+            bmwOne.Model = "328i";
+            bmwOne.EngineNoise = "vroom!";
+            bmwOne.HonkNoise = "hubba!";
+            bmwOne.IsDriveable = true;
+            reggiesAutoWorld.Cars.Add(bmwOne);
 
-            //Create a seperate class file called Car
-            //Car shall have the following properties: Year, Make, Model, EngineNoise, HonkNoise, IsDriveable
-            //Car shall have the following methods: MakeEngineNoise(), MakeHonkNoise()
-            //The methods should take one string parameter: the respective noise property
+            bmwOne.PresentCar();
+            bmwOne.MakeEngineNoise();
+            bmwOne.MakeHonkNoise();
 
+            //car2 with object initializer syntax
+            var ioniq = new Car()
+            {
+                Year = 2024,
+                Make = "Hyundai",
+                Model = "Ioniq 5",
+                EngineNoise = "whirr",
+                HonkNoise = "beep!",
+                IsDriveable = true,
+            };
+            reggiesAutoWorld.Cars.Add(ioniq);
+            
+            ioniq.PresentCar();
+            ioniq.MakeEngineNoise();
+            ioniq.MakeHonkNoise();
 
-            //Now that the Car class is created we can instanciate 3 new cars
-            //Set the properties for each of the cars
-            //Call each of the methods for each car
+            //car # w/ custom method
+            var frontier = new Car(2023, "Nissan", "Frontier", "rumblebumble!", "ayhooga!", true);
+            reggiesAutoWorld.Cars.Add(frontier);
+            frontier.PresentCar();
+            frontier.MakeEngineNoise();
+            frontier.MakeHonkNoise();
 
-            //*************BONUS*************//
-
-            // Set the properties utilizing the 3 different ways we learned about, one way for each car
-
-            //*************BONUS X 2*************//
-
-            //Create a CarLot class
-            //It should have at least one property: a List of cars
-            //Instanciate the a Carlot at the beginning of the program and as you create a car add the car to the list.
-            //At the end iterate through the list printing each of car's Year, Make, and Model to the console
+            //list of cars in class CarLot
+            foreach (var car in reggiesAutoWorld.Cars)
+            {
+                Console.WriteLine($"{car.Year} {car.Make} {car.Model}");
+            }
+            
         }
     }
 }
