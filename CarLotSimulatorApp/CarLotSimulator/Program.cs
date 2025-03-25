@@ -7,47 +7,42 @@ namespace CarLotSimulator
         
         static void Main(string[] args)
         {
-            CarLot reggiesAutoWorld = new CarLot();
+            CarLot carLot = new CarLot();
+            Console.WriteLine($"{CarLot._numberOfCars}");
             
             //car1 w/ dot notation
-            Car bmwOne = new Car();
+            Car bmwOne = new Car(2022, "BMW", "328i", "vroom!", "hubba!", true);
             bmwOne.Year = 2022;
             bmwOne.Make = "BMW";
             bmwOne.Model = "328i";
             bmwOne.EngineNoise = "vroom!";
             bmwOne.HonkNoise = "hubba!";
             bmwOne.IsDriveable = true;
-            reggiesAutoWorld.Cars.Add(bmwOne);
-
+            carLot.Cars.Add(bmwOne);
+            
             bmwOne.PresentCar();
             bmwOne.MakeEngineNoise();
             bmwOne.MakeHonkNoise();
+            Console.WriteLine(CarLot._numberOfCars);
 
             //car2 with object initializer syntax
-            var ioniq = new Car()
-            {
-                Year = 2024,
-                Make = "Hyundai",
-                Model = "Ioniq 5",
-                EngineNoise = "whirr",
-                HonkNoise = "beep!",
-                IsDriveable = true,
-            };
-            reggiesAutoWorld.Cars.Add(ioniq);
-            
+            var ioniq = new Car(2024, "Hyundai", "Ioniq 5", "whirr", "beep!", true);
+            carLot.Cars.Add(ioniq);
             ioniq.PresentCar();
             ioniq.MakeEngineNoise();
             ioniq.MakeHonkNoise();
+            Console.WriteLine(CarLot._numberOfCars);
 
             //car # w/ custom method
             var frontier = new Car(2023, "Nissan", "Frontier", "rumblebumble!", "ayhooga!", true);
-            reggiesAutoWorld.Cars.Add(frontier);
+            carLot.Cars.Add(frontier);
             frontier.PresentCar();
             frontier.MakeEngineNoise();
             frontier.MakeHonkNoise();
+            Console.WriteLine(CarLot._numberOfCars);
 
             //list of cars in class CarLot
-            foreach (var car in reggiesAutoWorld.Cars)
+            foreach (var car in carLot.Cars)
             {
                 Console.WriteLine($"{car.Year} {car.Make} {car.Model}");
             }

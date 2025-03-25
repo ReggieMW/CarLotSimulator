@@ -34,6 +34,8 @@ public class Car
         EngineNoise = engineNoise;
         HonkNoise = honkNoise;
         IsDriveable = isDriveable;
+
+        CarLot._numberOfCars++;
     }
 
     public Car()
